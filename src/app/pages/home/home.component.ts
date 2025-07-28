@@ -1,11 +1,8 @@
-import { Component, OnInit, AfterViewInit  } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import Typewriter from 'typewriter-effect/dist/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID, Inject } from '@angular/core';
-import { NgxParticlesModule } from '@tsparticles/angular'; 
-import { particlesConfig } from '../../particles-config';
-import { Container, Engine } from '@tsparticles/engine';
-import { loadSlim } from '@tsparticles/slim';
+
+// Import all your other components
 import { AboutComponent } from '../../components/about/about.component';
 import { ProjectsComponent } from '../../components/projects/projects.component';
 import { ExperienceComponent } from '../../components/experience/experience.component';
@@ -23,27 +20,18 @@ import { EducationComponent } from '../../components/education/education.compone
     ProjectsComponent,
     ExperienceComponent,
     CertificationsComponent,
-    ContactComponent,
-    NgxParticlesModule  
+    ContactComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  isBrowser: boolean; 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  particlesOptions = particlesConfig;
-  id = "tsparticles";
+  ngOnInit(): void {}
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { 
-    this.isBrowser = isPlatformBrowser(this.platformId); 
-  }
-
-  ngOnInit(): void {
-  }
-
-   ngAfterViewInit(): void {
-    if (this.isBrowser) {
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
       const typewriterTarget = document.querySelector('.hero-intro');
 
       if (typewriterTarget) {
@@ -57,17 +45,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
           .typeString('Hello World!!')
           .pauseFor(3000)
           .deleteAll()
-          .typeString('And Namaste!!')
+          .typeString('And Namaste!')
           .pauseFor(3000)
           .start();
       }
     }
-  }
- 
-  particlesLoaded(container: Container): void {
-  }
-
-  async particlesInit(engine: Engine): Promise<void> {
-    await loadSlim(engine);
   }
 }
