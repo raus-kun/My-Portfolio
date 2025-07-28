@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID, ElementRef, ViewChild } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import Typewriter from 'typewriter-effect/dist/core';
 
@@ -26,29 +26,38 @@ import { EducationComponent } from '../../components/education/education.compone
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+  @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const typewriterTarget = document.querySelector('.hero-intro');
+  if (isPlatformBrowser(this.platformId)) {
+    const typewriterTarget = document.querySelector('.hero-intro');
 
-      if (typewriterTarget) {
-        const typewriter = new Typewriter(typewriterTarget, {
-          loop: true,
-          delay: 75,
-        });
+    if (typewriterTarget) {
+      const typewriter = new Typewriter(typewriterTarget, {
+        loop: true,
+        delay: 75,
+      });
 
-        typewriter
-          .pauseFor(1000)
-          .typeString('Hello World!!')
-          .pauseFor(3000)
-          .deleteAll()
-          .typeString('And Namaste!')
-          .pauseFor(3000)
-          .start();
-      }
+      typewriter
+        .pauseFor(1000)
+        .typeString('Hello World!!')
+        .pauseFor(3000)
+        .deleteAll()
+        .typeString('And Namaste!')
+        .pauseFor(3000)
+        .start();
+    }
+    }
+
+    if (this.bgVideo?.nativeElement) {
+      const videoEl = this.bgVideo.nativeElement;
+      videoEl.muted = true; // Needed for autoplay
+      videoEl.play().catch(err => {
+        console.warn('Autoplay failed:', err);
+      });
     }
   }
 }
