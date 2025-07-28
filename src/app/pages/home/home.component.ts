@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           .typeString('Hello World!!')
           .pauseFor(3000)
           .deleteAll()
-          .typeString('Almost an Engineer')
+          .typeString('And Namaste!!')
           .pauseFor(3000)
           .start();
       }
