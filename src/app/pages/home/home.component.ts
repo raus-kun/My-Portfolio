@@ -33,14 +33,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
   if (isPlatformBrowser(this.platformId)) {
+    // Typewriter effect
     const typewriterTarget = document.querySelector('.hero-intro');
-
     if (typewriterTarget) {
       const typewriter = new Typewriter(typewriterTarget, {
         loop: true,
         delay: 75,
       });
-
       typewriter
         .pauseFor(1000)
         .typeString('Hello World!!')
@@ -50,14 +49,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
         .pauseFor(3000)
         .start();
     }
-    }
 
-    if (this.bgVideo?.nativeElement) {
-      const videoEl = this.bgVideo.nativeElement;
-      videoEl.muted = true; // Needed for autoplay
-      videoEl.play().catch(err => {
-        console.warn('Autoplay failed:', err);
-      });
-    }
+    // ✅ Delay video logic until DOM is really ready
+    setTimeout(() => {
+      const videoEl = this.bgVideo?.nativeElement;
+      if (videoEl && typeof videoEl.play === 'function') {
+        videoEl.muted = true;
+        videoEl.play().catch((err) => console.warn('Autoplay failed:', err));
+      } else {
+        console.warn('Video element not ready or play is not a function');
+      }
+    }, 0); // or 100ms if needed
   }
+}
 }
