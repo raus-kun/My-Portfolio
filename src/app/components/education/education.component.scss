@@ -1,0 +1,42 @@
+:host section {
+  position: relative; // Establishes a positioning context
+  overflow: hidden;   // Keeps the pseudo-element contained
+}
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+}
+
+.education-container {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.education-card {
+  background-color: var(--surface-color);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  border-left: 5px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  .institution {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .degree {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .duration {
+    font-size: 0.9rem;
+    color: var(--text-secondary-color);
+  }
+}

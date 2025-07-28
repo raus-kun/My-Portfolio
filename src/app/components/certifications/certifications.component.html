@@ -1,0 +1,17 @@
+<section id="certifications" class="container">
+  <h2 class="section-title">Certifications</h2>
+  <div class="cert-grid">
+    <a [href]="cert.fileUrl" target="_blank" rel="noopener noreferrer" class="cert-link" *ngFor="let cert of certifications" data-aos="fade-up">
+      <div class="cert-card">
+        <h3 class="cert-title">{{ cert.title }}</h3>
+        <p class="cert-provider">{{ cert.provider }}</p>
+      </div>
+    </a>
+  </div>
+
+   <div class="all-certs-container" data-aos="fade-up">
+    <a href="https://github.com/raus-kun/My_Certificates" target="_blank" rel="noopener noreferrer" class="all-certs-link">
+      View All Certifications
+    </a>
+  </div>
+</section>

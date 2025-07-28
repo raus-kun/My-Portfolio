@@ -1,0 +1,10 @@
+<section id="education" class="container" data-aos="fade-right">
+  <h2 class="section-title">Education</h2>
+  <div class="education-container">
+    <div class="education-card" *ngFor="let edu of educationHistory" data-aos="fade-right">
+      <h3 class="institution">{{ edu.institution }}</h3>
+      <p class="degree">{{ edu.degree }}</p>
+      <p class="duration">{{ edu.duration }}</p>
+    </div>
+  </div>
+</section>
