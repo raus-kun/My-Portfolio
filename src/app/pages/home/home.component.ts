@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
    ngAfterViewInit(): void {
-    // Check if we are in the browser
     if (this.isBrowser) {
       const typewriterTarget = document.querySelector('.hero-intro');
 

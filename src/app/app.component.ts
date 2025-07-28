@@ -17,7 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
   `,
   styles: [`
     main {
-      padding-top: 5rem; /* Space for the fixed header */
+      padding-top: 5rem; 
     }
   `]
 })
