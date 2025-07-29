@@ -1,4 +1,3 @@
-// src/app/particles-config.ts
 import type { ISourceOptions } from "@tsparticles/engine";
 
 export const particlesConfig: ISourceOptions = {

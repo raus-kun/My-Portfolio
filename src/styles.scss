@@ -1,7 +1,7 @@
 @import "aos/dist/aos.css";
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap'); /* Add this line */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap');
 
 /* Light Theme (Default) */
 :root {
@@ -34,7 +34,7 @@ body.dark-theme {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem; /* Offset for fixed header */
+  scroll-padding-top: 5rem;
 }
 
 body {
